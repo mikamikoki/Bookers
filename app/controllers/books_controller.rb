@@ -20,11 +20,6 @@ class BooksController < ApplicationController
     end
   end
 
-  private
-  def book_params
-    params.permit(:title, :body)
-  end
-
   def edit
   end
 
@@ -32,6 +27,11 @@ class BooksController < ApplicationController
      book = book.find(params[:id])
     book.destroy
     redirect_to book_path(book.id)
+  end
+
+  private
+  def book_params
+    params.permit(:title, :body)
   end
 
 end
