@@ -3,7 +3,11 @@
   <head></head>
 
   <body>
-    <p id="notice">Book was successfully created.</p>
+    <% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+     <% end %>
     <p>
       <strong>Title:</strong>
        <%= @book.title %>
@@ -12,8 +16,8 @@
       <strong>Body</strong>
        <%= @book.body %>
     </p>
-    <a class="edit_book" href="/books">Edit</a>
-    " | "
-    <a class="back" href="/books">Back</a>
+    <%= link_to "Edit", edit_book_path(@book.id) %>
+     |
+    <%= link_to "Back", books_path(@book.id) %>
   </body>
 </html>
